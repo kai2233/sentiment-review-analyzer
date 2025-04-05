@@ -11,11 +11,8 @@ def make_plot(sentiments: list) -> list:
     for sen in sentiments:
         sentiment_to_count[sen] += 1
     
-    sentiment = []
-    count = []
-    for key, val in sentiment_to_count.items():
-        sentiment.append(key)
-        count.append(val)
+    sentiment = sentiment_to_count.keys()
+    count = sentiment_to_count.values()
     plt.figure(figsize=(12,6))
     plt.title("sentiments review")
     fig, ax = plt.subplots()
