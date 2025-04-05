@@ -4,9 +4,8 @@ import matplotlib.pyplot as plt
 
 def make_plot(sentiments: list) -> list:
     """
-    INSERT DOCSTRING HERE
     """
-    sentiment_to_count = defaultdict(int)
+    sentiment_to_count = {"positive": 0, "negative": 0, "neutral": 0, "irrelevant": 0}
     
     for sen in sentiments:
         sentiment_to_count[sen] += 1
@@ -17,7 +16,7 @@ def make_plot(sentiments: list) -> list:
     plt.title("sentiments review")
     fig, ax = plt.subplots()
     ax.bar(sentiment, count)
-    ax.set_xlabel("count")
-    ax.set_ylabel("sentitments")
+    ax.set_xlabel("sentitments")
+    ax.set_ylabel("count")
 
     fig.savefig("./images/test.png")
