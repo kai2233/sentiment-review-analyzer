@@ -18,21 +18,21 @@ def get_sentiment(text: list) -> list:
     prompt = f"""
     For each line of text in the string below, please categorize the review
     as either positive, neutral, negative, or irrelevant.
+    Use only a one-word response per line. Do not include any numbers. Total response size should exactly match the input size.
 
-    Use only a one-word response per line. Do not include any numbers.
+    Input size: {len(text)}
+    Here are the input string:
     {text}
-    Format the result as a json object. For instance:
-    {{
-        "sentiments":["positive","neutral"]
-    }}
-    do not include ``` json ```
     """
+
     result = client.chat.completions.create(
         model = "gpt-4o-mini",
         messages = [
             {"role":"developer", "content":system_prompt},
-            {"role":"user", "content":prompt}
+            {"role":"user", "content":prompt},
+            {"role":"assistant", "content": "Format the result as a json object. For instance:{ \"sentiments\":[\"positive\", \"negative\",\"neutral\",\"irrelevant\"], \"line_count\": 4} and do not include ``` json ```."}
         ]
     )
+
     data = json.loads(result.choices[0].message.content)
     return data["sentiments"]
