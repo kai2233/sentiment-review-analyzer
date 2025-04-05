@@ -20,6 +20,12 @@ def get_sentiment(text: list) -> list:
     as either positive, neutral, negative, or irrelevant.
 
     Use only a one-word response per line. Do not include any numbers.
+    {text}
+    Format the result as a json object. For instance:
+    {{
+        "sentiments":["positive","neutral"]
+    }}
+    do not include ``` json ```
     """
     result = client.chat.completions.create(
         model = "gpt-4o-mini",
