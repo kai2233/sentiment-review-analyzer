@@ -6,7 +6,14 @@ import json
 
 def run(filepath: str):
     """
-    INSERT DOCSTRING HERE
+    Process the reviews from the JSON object at the specified file path,
+    analyze the sentiment of each review, then visualize the processed results and return them.
+
+    Args:
+        filepath (str): The path to the JSON file (e.g., 'data/raw/reviews.json').
+
+    Returns:
+        list[str]: A list of strings representing the sentiment of each review.
     """
     # open the json object
     with open(filepath, "r") as f:

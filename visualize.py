@@ -2,8 +2,16 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 
 
-def make_plot(sentiments: list) -> list:
+def make_plot(sentiments: list) -> None:
     """
+    Process sentiment data by calculating the frequency of each sentiment (positive, negative, neutral, irrelevant),
+    then visualize the dataset as a bar graph.
+
+    Args:
+        sentiments (list): A list of strings representing the sentiment of each corresponding review.
+
+    Returns:
+        None
     """
     sentiment_to_count = {"positive": 0, "negative": 0, "neutral": 0, "irrelevant": 0}
     
@@ -19,4 +27,4 @@ def make_plot(sentiments: list) -> list:
     ax.set_xlabel("sentitments")
     ax.set_ylabel("count")
 
-    fig.savefig("./images/test.png")
+    fig.savefig("./images/sentiments_result.png")
